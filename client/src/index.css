@@ -1,0 +1,186 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/satoshi/Satoshi-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/satoshi/Satoshi-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+/* Redaction — full serifs */
+@font-face {
+  font-family: 'Redaction';
+  src: url('./assets/fonts/redaction/Redaction-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction';
+  src: url('./assets/fonts/redaction/Redaction-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction';
+  src: url('./assets/fonts/redaction/Redaction-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Redaction 10 */
+@font-face {
+  font-family: 'Redaction 10';
+  src: url('./assets/fonts/redaction/Redaction_10-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 10';
+  src: url('./assets/fonts/redaction/Redaction_10-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 10';
+  src: url('./assets/fonts/redaction/Redaction_10-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Redaction 20 */
+@font-face {
+  font-family: 'Redaction 20';
+  src: url('./assets/fonts/redaction/Redaction_20-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 20';
+  src: url('./assets/fonts/redaction/Redaction_20-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 20';
+  src: url('./assets/fonts/redaction/Redaction_20-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Redaction 35 */
+@font-face {
+  font-family: 'Redaction 35';
+  src: url('./assets/fonts/redaction/Redaction_35-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 35';
+  src: url('./assets/fonts/redaction/Redaction_35-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 35';
+  src: url('./assets/fonts/redaction/Redaction_35-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Redaction 50 */
+@font-face {
+  font-family: 'Redaction 50';
+  src: url('./assets/fonts/redaction/Redaction_50-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 50';
+  src: url('./assets/fonts/redaction/Redaction_50-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 50';
+  src: url('./assets/fonts/redaction/Redaction_50-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Redaction 70 */
+@font-face {
+  font-family: 'Redaction 70';
+  src: url('./assets/fonts/redaction/Redaction_70-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 70';
+  src: url('./assets/fonts/redaction/Redaction_70-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 70';
+  src: url('./assets/fonts/redaction/Redaction_70-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Redaction 100 */
+@font-face {
+  font-family: 'Redaction 100';
+  src: url('./assets/fonts/redaction/Redaction_100-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 100';
+  src: url('./assets/fonts/redaction/Redaction_100-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Redaction 100';
+  src: url('./assets/fonts/redaction/Redaction_100-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@theme inline {
+  --font-satoshi: 'Satoshi', sans-serif;
+  --font-redaction: 'Redaction', serif;
+  --font-redaction-10: 'Redaction 10', serif;
+  --font-redaction-20: 'Redaction 20', serif;
+  --font-redaction-35: 'Redaction 35', serif;
+  --font-redaction-50: 'Redaction 50', serif;
+  --font-redaction-70: 'Redaction 70', serif;
+  --font-redaction-100: 'Redaction 100', serif;
+}
+
+body {
+  font-family: 'Satoshi', sans-serif;
+}
