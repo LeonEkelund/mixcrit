@@ -2,18 +2,12 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@font-face {
-  font-family: 'Satoshi';
-  src: url('./assets/fonts/satoshi/Satoshi-Variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-}
 
 @font-face {
-  font-family: 'Satoshi';
-  src: url('./assets/fonts/satoshi/Satoshi-VariableItalic.woff2') format('woff2');
+  font-family: 'Cabinet Grotesk';
+  src: url('./assets/fonts/cabinet-grotesk/CabinetGrotesk-Variable.woff2') format('woff2');
   font-weight: 100 900;
-  font-style: italic;
+  font-style: normal;
 }
 
 /* Redaction — full serifs */
@@ -171,7 +165,7 @@
 }
 
 @theme inline {
-  --font-satoshi: 'Satoshi', sans-serif;
+  --font-cabinet: 'Cabinet Grotesk', sans-serif;
   --font-redaction: 'Redaction', serif;
   --font-redaction-10: 'Redaction 10', serif;
   --font-redaction-20: 'Redaction 20', serif;
@@ -179,8 +173,23 @@
   --font-redaction-50: 'Redaction 50', serif;
   --font-redaction-70: 'Redaction 70', serif;
   --font-redaction-100: 'Redaction 100', serif;
+
+  --color-background: oklch(0.1448 0 0);
+  --color-foreground: oklch(0.9851 0 0);
+  --color-primary: #86efac;
+  --color-primary-foreground: oklch(0.9851 0 0);
+  --color-muted: oklch(0.2686 0 0);
+  --color-muted-foreground: oklch(0.7090 0 0);
+  --color-border: oklch(0.3407 0 0);
+  --color-ring: oklch(0.5555 0 0);
+
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.5rem;
 }
 
 body {
-  font-family: 'Satoshi', sans-serif;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  @apply bg-background text-foreground;
 }

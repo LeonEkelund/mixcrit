@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FolderOpen } from 'lucide-react'
+import { analyzeTrack } from '@/lib/audio/analyzeTrack'
+import { useAnalysis } from '@/lib/AnalysisContext'
 
 const genres = ['Hip-Hop', 'Pop', 'Metal', 'EDM']
 
@@ -8,7 +10,9 @@ function Upload() {
   const [file, setFile] = useState<File | null>(null)
   const [genre, setGenre] = useState('')
   const [dragging, setDragging] = useState(false)
+  const [analyzing, setAnalyzing] = useState(false)
   const navigate = useNavigate()
+  const { setAnalysis } = useAnalysis()
 
   function handleFile(audioFile: File) {
     if (audioFile.type.startsWith('audio/')) setFile(audioFile)
@@ -26,9 +30,13 @@ function Upload() {
     if (droppedFile) handleFile(droppedFile)
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!file || !genre) return
-    // TODO: pass file + genre to analysis, then navigate to report
+
+    setAnalyzing(true)
+    const result = await analyzeTrack(file)
+    setAnalysis(result, genre, file.name)
+    setAnalyzing(false)
     navigate('/report')
   }
 
@@ -57,8 +65,8 @@ function Upload() {
         </select>
       </div>
 
-      <button onClick={handleSubmit} disabled={!file || !genre}>
-        Analyze
+      <button onClick={handleSubmit} disabled={!file || !genre || analyzing}>
+        {analyzing ? 'Analyzing...' : 'Analyze'}
       </button>
     </div>
   )
