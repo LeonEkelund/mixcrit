@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
+import HowItWorks from '@/components/HowItWorks'
 
 function Landing() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
   return (
+    <>
     <main
       className="relative flex min-h-screen flex-col items-center justify-center gap-6 overflow-hidden"
       onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
@@ -29,16 +32,26 @@ function Landing() {
       <h1 className="relative font-redaction-50 italic text-7xl text-foreground tracking-tight">
         Instant mix feedback.
       </h1>
-      <p className="relative max-w-md text-center text-lg text-foreground/70">
+      <p className="relative -mt-2 max-w-md text-center text-lg text-foreground/70">
         Upload your track and get a detailed analysis in seconds. Completely free, no signup required.
       </p>
       <Link
         to="/upload"
-        className="relative mt-2 rounded-full bg-primary px-8 py-3 text-base font-medium uppercase tracking-wide text-background transition-transform duration-300 ease-in-out will-change-transform hover:scale-105"
+        className="relative rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-10 py-3.5 text-lg font-bold uppercase tracking-wide text-foreground/90 transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-foreground"
       >
         Try now
       </Link>
+      <HeroVideoDialog
+        className="relative mt-4 w-full max-w-3xl"
+        animationStyle="from-center"
+        videoSrc="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        thumbnailSrc="https://placehold.co/1920x1080/1a1a1a/666?text=MixCrit+Demo"
+        thumbnailAlt="MixCrit demo walkthrough"
+      />
     </main>
+
+    <HowItWorks />
+  </>
   )
 }
 
