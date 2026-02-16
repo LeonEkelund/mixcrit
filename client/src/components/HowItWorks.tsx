@@ -13,8 +13,8 @@ export default function HowItWorks() {
 
   return (
     <section className="relative flex flex-col items-center gap-8 py-24 px-6">
-      <h2 className="text-4xl font-redaction-50 font-medium tracking-tight text-foreground">
-        HOW IT WORKS
+      <h2 className="text-6xl font-redaction-50 font-medium tracking-tight italic text-foreground">
+        How it works
       </h2>
 
       <div
@@ -32,6 +32,9 @@ export default function HowItWorks() {
           <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
             Upload
           </span>
+          <p className="max-w-32 text-center text-xs text-muted-foreground/70">
+            Drop your mix in any format
+          </p>
         </div>
 
         {/* Analyze */}
@@ -45,6 +48,9 @@ export default function HowItWorks() {
           <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
             Analyze
           </span>
+          <p className="max-w-32 text-center text-xs text-muted-foreground/70">
+            Examines EQ, dynamics, and more
+          </p>
         </div>
 
         {/* MixCrit */}
@@ -53,11 +59,14 @@ export default function HowItWorks() {
             ref={mixcritRef}
             className="relative z-10 flex size-16 items-center justify-center rounded-full border border-white/10 bg-background backdrop-blur-md"
           >
-            <img src={logo} alt="MixCrit" className="size-7" />
+            <img src={logo} alt="MixCrit" className="size-7 opacity-70" />
           </div>
           <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
             Report
           </span>
+          <p className="max-w-32 text-center text-xs text-muted-foreground/70">
+            Get actionable feedback in seconds
+          </p>
         </div>
 
         {/* Beam 1: User → Analyze (curves up) */}
@@ -81,14 +90,14 @@ export default function HowItWorks() {
           toRef={analyzeRef}
           curvature={-40}
           pathColor="transparent"
-          pathWidth={6}
+          pathWidth={12}
           pathOpacity={0}
-          gradientStartColor="rgba(255,255,255,0.4)"
-          gradientStopColor="rgba(255,255,255,0.4)"
+          gradientStartColor="rgba(255,255,255,0.6)"
+          gradientStopColor="rgba(255,255,255,0.6)"
           duration={2}
           startXOffset={edgeOffset}
           endXOffset={-edgeOffset}
-          className="blur-[3px]"
+          className="blur-[6px]"
         />
 
         {/* Beam 2: Analyze → MixCrit (curves down) */}
@@ -113,15 +122,15 @@ export default function HowItWorks() {
           toRef={mixcritRef}
           curvature={40}
           pathColor="transparent"
-          pathWidth={6}
+          pathWidth={12}
           pathOpacity={0}
-          gradientStartColor="rgba(255,255,255,0.4)"
-          gradientStopColor="rgba(255,255,255,0.4)"
+          gradientStartColor="rgba(255,255,255,0.6)"
+          gradientStopColor="rgba(255,255,255,0.6)"
           duration={2}
           delay={0}
           startXOffset={edgeOffset}
           endXOffset={-edgeOffset}
-          className="blur-[3px]"
+          className="blur-[6px]"
         />
       </div>
     </section>

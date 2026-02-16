@@ -4,8 +4,8 @@
 
 
 @font-face {
-  font-family: 'Cabinet Grotesk';
-  src: url('./assets/fonts/cabinet-grotesk/CabinetGrotesk-Variable.woff2') format('woff2');
+  font-family: 'General Sans';
+  src: url('./assets/fonts/general-sans/GeneralSans-Variable.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
 }
@@ -165,7 +165,7 @@
 }
 
 @theme inline {
-  --font-cabinet: 'Cabinet Grotesk', sans-serif;
+  --font-general-sans: 'General Sans', sans-serif;
   --font-redaction: 'Redaction', serif;
   --font-redaction-10: 'Redaction 10', serif;
   --font-redaction-20: 'Redaction 20', serif;
@@ -190,6 +190,6 @@
 }
 
 body {
-  font-family: 'Cabinet Grotesk', sans-serif;
+  font-family: 'General Sans', sans-serif;
   @apply bg-background text-foreground;
 }
