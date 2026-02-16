@@ -7,19 +7,25 @@ import Upload from './pages/Upload'
 import Report from './pages/Report'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Footer from './components/Footer'
 
 function App() {
   return (
     <BrowserRouter>
       <AnalysisProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/report" element={<Report />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <div className="flex-1">
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/upload" element={<Upload />} />
+              <Route path="/report" element={<Report />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
       </AnalysisProvider>
     </BrowserRouter>
   )

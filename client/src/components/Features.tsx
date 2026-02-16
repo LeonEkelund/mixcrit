@@ -38,7 +38,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="flex flex-col items-center gap-10 px-6 py-24">
+    <section className="flex flex-col items-center gap-10 px-6 pt-12 pb-24">
       <h2 className="text-6xl font-redaction-50 font-medium tracking-tight italic text-foreground">
         What you get
       </h2>

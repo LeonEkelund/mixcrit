@@ -12,14 +12,14 @@ export default function HowItWorks() {
   const edgeOffset = 32 // radius of size-16 circles
 
   return (
-    <section className="relative flex flex-col items-center gap-8 py-24 px-6">
+    <section className="relative flex flex-col items-center gap-8 pt-24 pb-12 px-6">
       <h2 className="text-6xl font-redaction-50 font-medium tracking-tight italic text-foreground">
         How it works
       </h2>
 
       <div
         ref={containerRef}
-        className="relative flex w-full max-w-3xl items-center justify-between px-10"
+        className="relative flex w-full max-w-4xl items-center justify-between px-10"
       >
         {/* User */}
         <div className="flex flex-col items-center gap-3">
