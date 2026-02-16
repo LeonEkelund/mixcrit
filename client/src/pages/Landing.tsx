@@ -39,9 +39,9 @@ function Landing() {
         </p>
         <Link
           to="/upload"
-          className="relative rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-10 py-3.5 text-lg font-normal tracking-wide text-foreground/90 transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-foreground"
+          className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-10 py-3.5 text-sm font-medium uppercase tracking-wide text-foreground/90 shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-foreground hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
         >
-          Try now
+          Analyze your mix
         </Link>
         <HeroVideoDialog
           className="relative mt-4 w-full max-w-3xl"
