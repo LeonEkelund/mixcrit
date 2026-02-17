@@ -41,33 +41,42 @@ function Upload() {
   }
 
   return (
-    <div>
-      <h1>Upload</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="w-full max-w-md flex flex-col items-center gap-6">
+        <label
+          onDragOver={(event) => { event.preventDefault(); setDragging(true) }}
+          onDragLeave={() => setDragging(false)}
+          onDrop={handleDrop}
+          className={`w-full flex flex-col items-center gap-2 rounded-lg p-6 text-center cursor-pointer border-2 border-dashed transition-colors ${dragging ? 'border-white' : 'border-muted-foreground/40 hover:border-muted-foreground'}`}
+        >
+          <FolderOpen size={32} className="text-muted-foreground" />
+          <p className="text-sm text-muted-foreground">{file ? file.name : 'Click or drag an audio file here'}</p>
+          <input type="file" accept="audio/*" onChange={handleFileChange} hidden />
+        </label>
 
-      <label
-        onDragOver={(event) => { event.preventDefault(); setDragging(true) }}
-        onDragLeave={() => setDragging(false)}
-        onDrop={handleDrop}
-        style={{ border: dragging ? '2px solid white' : '2px dashed gray', padding: '40px', textAlign: 'center', cursor: 'pointer', display: 'block' }}
-      >
-        <FolderOpen size={48} />
-        <p>{file ? file.name : 'Click or drag an audio file here'}</p>
-        <input type="file" accept="audio/*" onChange={handleFileChange} hidden />
-      </label>
+        <div className="w-full">
+          <select
+            value={genre}
+            onChange={(event) => setGenre(event.target.value)}
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+          >
+            <option value="">Select a genre</option>
+            {genres.map((genreOption) => (
+              <option key={genreOption} value={genreOption}>{genreOption}</option>
+            ))}
+          </select>
+        </div>
 
-      <div>
-        <label>Genre</label>
-        <select value={genre} onChange={(event) => setGenre(event.target.value)}>
-          <option value="">Select a genre</option>
-          {genres.map((genreOption) => (
-            <option key={genreOption} value={genreOption}>{genreOption}</option>
-          ))}
-        </select>
+        <button
+          onClick={handleSubmit}
+          disabled={!file || !genre || analyzing}
+          className="w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-background transition-opacity duration-300 disabled:opacity-30 disabled:pointer-events-none enabled:hover:opacity-90"
+        >
+          {analyzing ? 'Analyzing...' : 'Analyze'}
+        </button>
+
+        <p className="text-xs text-muted-foreground/60 text-center">Your file is analyzed locally and is never uploaded or stored on any server.</p>
       </div>
-
-      <button onClick={handleSubmit} disabled={!file || !genre || analyzing}>
-        {analyzing ? 'Analyzing...' : 'Analyze'}
-      </button>
     </div>
   )
 }
