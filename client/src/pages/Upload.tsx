@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FolderOpen } from 'lucide-react'
 import { analyzeTrack } from '@/lib/audio/analyzeTrack'
 import { useAnalysis } from '@/lib/AnalysisContext'
+import { motion } from 'motion/react'
 
 const genres = ['Hip-Hop', 'Pop', 'Metal', 'EDM']
 
@@ -11,8 +12,10 @@ function Upload() {
   const [genre, setGenre] = useState('')
   const [dragging, setDragging] = useState(false)
   const [analyzing, setAnalyzing] = useState(false)
+  const [fadingOut, setFadingOut] = useState(false)
   const navigate = useNavigate()
   const { setAnalysis } = useAnalysis()
+  const resultRef = useRef<Awaited<ReturnType<typeof analyzeTrack>> | null>(null)
 
   function handleFile(audioFile: File) {
     if (audioFile.type.startsWith('audio/')) setFile(audioFile)
@@ -35,14 +38,25 @@ function Upload() {
 
     setAnalyzing(true)
     const result = await analyzeTrack(file)
+    resultRef.current = result
     setAnalysis(result, genre, file.name, file)
-    setAnalyzing(false)
-    navigate('/report')
+    setFadingOut(true)
+  }
+
+  function handleFadeComplete() {
+    if (fadingOut) {
+      navigate('/report')
+    }
   }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4">
-      <div className="w-full max-w-md flex flex-col items-center gap-6">
+      <motion.div
+        animate={{ opacity: fadingOut ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
+        onAnimationComplete={handleFadeComplete}
+        className="w-full max-w-md flex flex-col items-center gap-6"
+      >
         <label
           onDragOver={(event) => { event.preventDefault(); setDragging(true) }}
           onDragLeave={() => setDragging(false)}
@@ -76,7 +90,7 @@ function Upload() {
         </button>
 
         <p className="text-xs text-muted-foreground/60 text-center">Your file is analyzed locally and is never uploaded or stored on any server.</p>
-      </div>
+      </motion.div>
     </div>
   )
 }
