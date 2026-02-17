@@ -35,7 +35,7 @@ function Upload() {
 
     setAnalyzing(true)
     const result = await analyzeTrack(file)
-    setAnalysis(result, genre, file.name)
+    setAnalysis(result, genre, file.name, file)
     setAnalyzing(false)
     navigate('/report')
   }
