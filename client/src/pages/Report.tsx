@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useAnalysis } from '@/lib/AnalysisContext'
 import { genreTargets } from '@/lib/audio/genreTargets'
 import { Link } from 'react-router-dom'
-import { Play, Pause, Volume2, Activity, Radio, Gauge } from 'lucide-react'
+import { Volume2, Activity, Radio, Gauge } from 'lucide-react'
 import { BentoGrid, BentoCard } from '@/components/ui/bento-grid'
 import { TonalProfile } from '@/components/TonalProfile'
 import { motion, AnimatePresence } from 'motion/react'
@@ -187,7 +187,7 @@ function Report() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, exit: { duration: 0.5 } }}
+            transition={{ duration: 0.3 }}
           >
             <LoadingScreen />
           </motion.div>
