@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { useAnalysis } from '@/lib/AnalysisContext'
 import { genreTargets } from '@/lib/audio/genreTargets'
+import { getSuggestions } from '@/lib/suggest'
 import { Link } from 'react-router-dom'
-import { Volume2, Activity, Radio, Gauge } from 'lucide-react'
+import { Volume2, Activity, Radio, Gauge, Sparkles } from 'lucide-react'
 import { BentoGrid, BentoCard } from '@/components/ui/bento-grid'
 import { TonalProfile } from '@/components/TonalProfile'
 import { motion, AnimatePresence } from 'motion/react'
@@ -109,6 +110,8 @@ function Report() {
   const [duration, setDuration] = useState(0)
   const [spectrogramReady, setSpectrogramReady] = useState(false)
   const [timerDone, setTimerDone] = useState(false)
+  const [suggestions, setSuggestions] = useState<string | null>(null)
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false)
   const ready = spectrogramReady && timerDone
 
   useEffect(() => {
@@ -168,6 +171,13 @@ function Report() {
   }
 
   const targets = genreTargets[genre]
+
+  async function handleGetSuggestions() {
+    setLoadingSuggestions(true)
+    const text = await getSuggestions(result, genre)
+    setSuggestions(text)
+    setLoadingSuggestions(false)
+  }
 
   const bandLabels: Record<string, string> = {
     sub: 'Sub (20–60 Hz)',
@@ -338,6 +348,38 @@ function Report() {
               }
             />
           </BentoGrid>
+
+          {/* AI Suggestions */}
+          <div className="mt-8 w-full">
+            {!suggestions && (
+              <div className="flex justify-center">
+                <button
+                  onClick={handleGetSuggestions}
+                  disabled={loadingSuggestions}
+                  className="px-6 py-3 rounded-full bg-primary text-background text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" />
+                    {loadingSuggestions ? 'Analyzing...' : 'Get AI Suggestions'}
+                  </span>
+                </button>
+              </div>
+            )}
+
+            {suggestions && (
+              <div className="rounded-xl border border-border bg-black p-4 text-base">
+                <div className="flex items-center gap-1.5 mb-4">
+                  <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                </div>
+                <p className="text-white whitespace-pre-wrap leading-loose tracking-wide">
+                  <span className="text-muted-foreground select-none">~ </span>
+                  {suggestions}
+                </p>
+              </div>
+            )}
+          </div>
 
           {/* Footer link */}
           <div className="mt-10 text-center">
