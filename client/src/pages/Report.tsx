@@ -174,7 +174,7 @@ function Report() {
 
   async function handleGetSuggestions() {
     setLoadingSuggestions(true)
-    const text = await getSuggestions(result, genre)
+    const text = await getSuggestions(result!, genre)
     setSuggestions(text)
     setLoadingSuggestions(false)
   }
