@@ -205,6 +205,10 @@
   }
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: 'General Sans', sans-serif;
   @apply bg-background text-foreground;
