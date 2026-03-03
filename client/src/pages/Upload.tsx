@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FolderOpen } from 'lucide-react'
+import { FolderOpen, ChevronDown } from 'lucide-react'
 import { analyzeTrack } from '@/lib/audio/analyzeTrack'
 import { useAnalysis } from '@/lib/AnalysisContext'
 import { motion } from 'motion/react'
@@ -68,17 +68,18 @@ function Upload() {
           <input type="file" accept="audio/*" onChange={handleFileChange} hidden />
         </label>
 
-        <div className="w-full">
+        <div className="relative w-full">
           <select
             value={genre}
             onChange={(event) => setGenre(event.target.value)}
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+            className="w-full appearance-none rounded-md border border-border bg-background px-3 py-2 pr-9 text-sm"
           >
             <option value="">Select a genre</option>
             {genres.map((genreOption) => (
               <option key={genreOption} value={genreOption}>{genreOption}</option>
             ))}
           </select>
+          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
         </div>
 
         <button

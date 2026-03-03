@@ -11,7 +11,7 @@ function Landing() {
   return (
     <>
       <main
-        className="relative flex min-h-screen flex-col items-center justify-center gap-6 overflow-hidden"
+        className="relative flex min-h-screen flex-col items-center justify-center gap-6 overflow-hidden px-4 lg:px-12"
         onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
       >
         {/* Dot grid with vignette */}
@@ -30,16 +30,15 @@ function Landing() {
           }}
         />
 
-
-        <h1 className="relative font-redaction-50 italic text-7xl text-foreground tracking-tight">
+        <h1 className="relative text-center font-redaction-50 italic text-4xl md:text-5xl lg:text-7xl text-foreground tracking-tight">
           Instant mix feedback.
         </h1>
-        <p className="relative -mt-2 max-w-md text-center text-lg text-foreground/70">
+        <p className="relative -mt-2 max-w-md text-center text-base sm:text-lg text-foreground/70">
           Upload your track and get a detailed analysis in seconds. Completely free, no signup required.
         </p>
         <Link
           to="/upload"
-          className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-10 py-3.5 text-sm font-medium uppercase tracking-wide text-foreground/90 shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-foreground hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+          className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-8 sm:px-10 py-3.5 text-sm font-medium uppercase tracking-wide text-foreground/90 shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-foreground hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
         >
           Analyze your mix
         </Link>

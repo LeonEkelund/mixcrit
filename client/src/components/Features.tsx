@@ -7,7 +7,7 @@ const features = [
     name: 'EQ Balance',
     description: 'See how your frequency spectrum stacks up',
     detail: 'Broken down by sub, low, mid, high, and air bands',
-    className: 'col-span-3 sm:col-span-1',
+    className: 'col-span-1',
     background: <></>,
   },
   {
@@ -15,7 +15,7 @@ const features = [
     name: 'Dynamic Range',
     description: 'Check your compression and transient detail',
     detail: 'Crest factor, peak-to-loudness ratio, and more',
-    className: 'col-span-3 sm:col-span-1',
+    className: 'col-span-1',
     background: <></>,
   },
   {
@@ -23,7 +23,7 @@ const features = [
     name: 'Stereo Width',
     description: 'Analyze your stereo image across frequencies',
     detail: 'Correlation, mid/side balance, and panning spread',
-    className: 'col-span-3 sm:col-span-1',
+    className: 'col-span-1',
     background: <></>,
   },
   {
@@ -31,19 +31,19 @@ const features = [
     name: 'Loudness',
     description: 'LUFS measurements against streaming targets',
     detail: 'Integrated, short-term, and true peak with platform targets',
-    className: 'col-span-3 sm:col-span-1',
+    className: 'col-span-1',
     background: <></>,
   },
 ]
 
 export default function Features() {
   return (
-    <section className="flex flex-col items-center gap-10 px-6 pt-12 pb-24">
-      <h2 className="text-6xl font-redaction-50 font-medium tracking-tight italic text-foreground">
+    <section className="flex flex-col items-center gap-10 px-4 sm:px-6 pt-12 pb-24">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-redaction-50 font-medium tracking-tight italic text-foreground">
         What you get
       </h2>
 
-      <BentoGrid className="max-w-3xl auto-rows-[12rem] grid-cols-3 sm:grid-cols-2">
+      <BentoGrid className="max-w-3xl auto-rows-[10rem] lg:auto-rows-[12rem] grid-cols-1 lg:grid-cols-2">
         {features.map((feature) => (
           <BentoCard key={feature.name} {...feature} />
         ))}

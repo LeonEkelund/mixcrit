@@ -65,9 +65,14 @@ export function TonalProfile({ spectrum, targets }: {
         ctx.fillRect(xStart, padTop, bandWidth, h - padTop - padBottom)
 
         // Status label above
-        const label = inRange ? 'Optimal' : value < target.min ? 'Too Low' : 'Too High'
+        const narrow = w < 400
+        const label = inRange
+          ? (narrow ? 'OK' : 'Optimal')
+          : value < target.min
+            ? (narrow ? 'Low' : 'Too Low')
+            : (narrow ? 'High' : 'Too High')
         ctx.fillStyle = inRange ? '#86efac' : '#ef4444'
-        ctx.font = '11px General Sans, sans-serif'
+        ctx.font = `${narrow ? 10 : 11}px General Sans, sans-serif`
         ctx.textAlign = 'center'
         ctx.fillText(label, xCenter, padTop - 8)
       }

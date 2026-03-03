@@ -12,59 +12,59 @@ export default function HowItWorks() {
   const edgeOffset = 32 // radius of size-16 circles
 
   return (
-    <section className="relative flex flex-col items-center gap-8 pt-24 pb-12 px-6">
-      <h2 className="text-6xl font-redaction-50 font-medium tracking-tight italic text-foreground">
+    <section className="relative flex flex-col items-center gap-8 pt-24 pb-12 px-4 sm:px-6">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-redaction-50 font-medium tracking-tight italic text-foreground">
         How it works
       </h2>
 
       <div
         ref={containerRef}
-        className="relative flex w-full max-w-4xl items-center justify-between px-10"
+        className="relative flex w-full max-w-4xl items-center justify-between px-4 lg:px-10"
       >
         {/* User */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-2 sm:gap-3">
           <div
             ref={userRef}
-            className="relative z-10 flex size-16 items-center justify-center rounded-full border border-white/10 bg-background backdrop-blur-md"
+            className="relative z-10 flex size-12 lg:size-16 items-center justify-center rounded-full border border-white/10 bg-background backdrop-blur-md"
           >
-            <User className="size-7 text-foreground/70" />
+            <User className="size-5 lg:size-7 text-foreground/70" />
           </div>
-          <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-wide text-muted-foreground">
             Upload
           </span>
-          <p className="max-w-32 text-center text-xs text-muted-foreground/70">
+          <p className="max-w-[5rem] sm:max-w-32 text-center text-[10px] sm:text-xs text-muted-foreground/70">
             Drop your mix in any format
           </p>
         </div>
 
         {/* Analyze */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-2 sm:gap-3">
           <div
             ref={analyzeRef}
-            className="relative z-10 flex size-16 items-center justify-center rounded-full border border-white/10 bg-background backdrop-blur-md"
+            className="relative z-10 flex size-12 lg:size-16 items-center justify-center rounded-full border border-white/10 bg-background backdrop-blur-md"
           >
-            <AudioWaveform className="size-7 text-foreground/70" />
+            <AudioWaveform className="size-5 lg:size-7 text-foreground/70" />
           </div>
-          <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-wide text-muted-foreground">
             Analyze
           </span>
-          <p className="max-w-32 text-center text-xs text-muted-foreground/70">
+          <p className="max-w-[5rem] sm:max-w-32 text-center text-[10px] sm:text-xs text-muted-foreground/70">
             Examines EQ, dynamics, and more
           </p>
         </div>
 
         {/* MixCrit */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-2 sm:gap-3">
           <div
             ref={mixcritRef}
-            className="relative z-10 flex size-16 items-center justify-center rounded-full border border-white/10 bg-background backdrop-blur-md"
+            className="relative z-10 flex size-12 lg:size-16 items-center justify-center rounded-full border border-white/10 bg-background backdrop-blur-md"
           >
-            <img src={logo} alt="MixCrit" className="size-7 opacity-70" />
+            <img src={logo} alt="MixCrit" className="size-5 lg:size-7 opacity-70" />
           </div>
-          <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-wide text-muted-foreground">
             Report
           </span>
-          <p className="max-w-32 text-center text-xs text-muted-foreground/70">
+          <p className="max-w-[5rem] sm:max-w-32 text-center text-[10px] sm:text-xs text-muted-foreground/70">
             Get actionable feedback in seconds
           </p>
         </div>

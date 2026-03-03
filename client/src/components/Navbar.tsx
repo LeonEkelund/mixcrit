@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <>
       {/* Desktop navbar */}
-      <header className="fixed top-6 left-0 right-0 z-50 hidden md:grid grid-cols-[1fr_auto_1fr] items-center px-16">
+      <header className="fixed top-6 left-0 right-0 z-50 hidden lg:grid grid-cols-[1fr_auto_1fr] items-center px-16">
         {/* Logo — left */}
         <Link to="/" className="flex items-center gap-2 justify-self-start transition-opacity opacity-80 hover:opacity-100">
           <img src={logo} alt="MixCrit" className="h-8 w-auto translate-y-px" />
@@ -69,7 +69,7 @@ export default function Navbar() {
       </header>
 
       {/* Mobile header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:hidden">
         <Link to="/" className="flex items-center gap-2 opacity-80">
           <img src={logo} alt="MixCrit" className="h-6 w-auto" />
           <span className="font-redaction-50 italic text-2xl leading-none text-foreground tracking-tighter translate-y-[3px]">MIXCRIT</span>
@@ -88,7 +88,7 @@ export default function Navbar() {
       </header>
 
       {/* Fullscreen mobile menu */}
-      <div className={`fixed inset-0 z-40 bg-background/40 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+      <div className={`fixed inset-0 z-40 bg-background/40 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <nav className="flex flex-col items-center gap-6">
           {navLinks.map(({ label, to }) => (
             <Link
