@@ -2,6 +2,10 @@ import freq from '@/assets/screenshots/freq-frame.png'
 import dynamic from '@/assets/screenshots/dynamic-frame.png'
 import stereo from '@/assets/screenshots/stereo-frame.png'
 import loud from '@/assets/screenshots/loud-frame.png'
+import cardbg1 from '@/assets/cardbg1.png'
+import cardbg2 from '@/assets/cardbg2.png'
+import testbg from '@/assets/testbg.png'
+import spacepixel from '@/assets/Spacepixel.png'
 
 const features = [
   {
@@ -9,24 +13,28 @@ const features = [
     description: 'See how your EQ balance stacks up against genre targets across sub, low, mids, high mids, and highs.',
     image: freq,
     imageAlt: 'Frequency spectrum',
+    bg: cardbg1,
   },
   {
     title: 'Dynamics',
     description: 'Dynamic range, crest factor, and clipping detection to keep your mix punchy and controlled.',
     image: dynamic,
     imageAlt: 'Dynamics',
+    bg: testbg,
   },
   {
     title: 'Stereo Image',
     description: 'Stereo width, correlation, and mono compatibility so your mix translates on every speaker.',
     image: stereo,
     imageAlt: 'Stereo image',
+    bg: spacepixel,
   },
   {
     title: 'Loudness',
     description: 'Integrated LUFS and true peak checked against Spotify, Apple Music, and YouTube targets.',
     image: loud,
     imageAlt: 'Loudness',
+    bg: cardbg2,
   },
 ]
 
@@ -66,11 +74,18 @@ export default function Features() {
               </div>
 
               {/* Right — image */}
-              <div className="flex items-center justify-center lg:w-3/5 p-6 bg-white/[0.01] overflow-hidden">
+              <div
+                className="flex items-center justify-center lg:w-3/5 p-6 overflow-hidden"
+                style={{
+                  backgroundImage: `url(${feature.bg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              >
                 <img
                   src={feature.image}
                   alt={feature.imageAlt}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain mix-blend-screen"
                 />
               </div>
             </div>
