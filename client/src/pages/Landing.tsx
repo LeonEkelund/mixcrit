@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
-import { motion } from 'motion/react'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
 import Features from '@/components/Features'
 import thumbnail from '@/assets/thumbnail.png'
