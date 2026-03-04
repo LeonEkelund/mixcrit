@@ -1,12 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { ChevronDown } from 'lucide-react'
+import { motion } from 'motion/react'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
-import HowItWorks from '@/components/HowItWorks'
 import Features from '@/components/Features'
 import thumbnail from '@/assets/thumbnail.png'
 
 function Landing() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [showChevron, setShowChevron] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowChevron(true), 2000)
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', onScroll)
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
 
   return (
     <>
@@ -49,9 +62,15 @@ function Landing() {
           thumbnailSrc={thumbnail}
           thumbnailAlt="MixCrit demo walkthrough"
         />
+
+        {/* Scroll chevron */}
+        <div
+          className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-700 ${showChevron && !scrolled ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <ChevronDown className="size-6 text-foreground/50 animate-bounce" />
+        </div>
       </main>
 
-      <HowItWorks />
       <Features />
     </>
   )

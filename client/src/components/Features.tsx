@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { User, AudioWaveform } from 'lucide-react'
 import freq from '@/assets/screenshots/freq-final.png'
 import dynamic from '@/assets/screenshots/dynamic-final.png'
 import stereo from '@/assets/screenshots/stereo-final.png'
 import loud from '@/assets/screenshots/loud-final.png'
+import logo from '@/assets/mixcritsvgfinal.svg'
 import { StripedPattern } from '@/components/magicui/striped-pattern'
+import { AnimatedBeam } from '@/components/ui/animated-beam'
 
 const features = [
   {
@@ -36,11 +39,18 @@ const features = [
   },
 ]
 
+const edgeOffset = 32
+
 export default function Features() {
   const [flipped, setFlipped] = useState<number | null>(null)
 
+  const containerRef = useRef<HTMLDivElement>(null)
+  const userRef = useRef<HTMLDivElement>(null)
+  const analyzeRef = useRef<HTMLDivElement>(null)
+  const mixcritRef = useRef<HTMLDivElement>(null)
+
   return (
-    <section className="pt-12">
+    <section className="pt-4">
       <div className="flex">
 
         {/* Left side panel — desktop only */}
@@ -52,16 +62,59 @@ export default function Features() {
         </div>
 
         {/* Outer bordered container */}
-        <div className="border border-white/10 w-full lg:max-w-5xl px-4 sm:px-6 lg:px-0">
+        <div className="relative border border-white/10 w-full lg:max-w-5xl px-4 sm:px-6 lg:px-0">
 
           {/* Heading row */}
-          <div className="px-8 py-12 border-b border-white/10 text-center">
+          <div className="px-8 py-12 text-center">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-redaction-50 italic text-foreground tracking-tight">
-              What you get
+              From upload to insight
             </h2>
             <p className="mt-3 text-sm text-muted-foreground/60 max-w-sm mx-auto">
-              Every analysis runs locally in your browser. No uploads, no waiting, no accounts.
+              Runs entirely in your browser. No accounts, no waiting.
             </p>
+          </div>
+
+          {/* How it works strip */}
+          <div className="border-b border-white/10 px-8 py-6">
+            <div
+              ref={containerRef}
+              className="relative flex w-full sm:max-w-2xl mx-auto items-center justify-between px-2 sm:px-4"
+            >
+              {/* User */}
+              <div className="flex flex-col items-center gap-2">
+                <div ref={userRef} className="relative z-10 flex size-12 items-center justify-center rounded-full border border-white/10 bg-background">
+                  <User className="size-5 text-foreground/70" />
+                </div>
+                <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Upload</span>
+                <p className="max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Drop your mix in any format</p>
+              </div>
+
+              {/* Analyze */}
+              <div className="flex flex-col items-center gap-2">
+                <div ref={analyzeRef} className="relative z-10 flex size-12 items-center justify-center rounded-full border border-white/10 bg-background">
+                  <AudioWaveform className="size-5 text-foreground/70" />
+                </div>
+                <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Analyze</span>
+                <p className="max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Examines EQ, dynamics, and more</p>
+              </div>
+
+              {/* Report */}
+              <div className="flex flex-col items-center gap-2">
+                <div ref={mixcritRef} className="relative z-10 flex size-12 items-center justify-center rounded-full border border-white/10 bg-background">
+                  <img src={logo} alt="MixCrit" className="size-5 opacity-70" />
+                </div>
+                <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Report</span>
+                <p className="max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Get actionable feedback in seconds</p>
+              </div>
+
+              {/* Beam 1 */}
+              <AnimatedBeam containerRef={containerRef} fromRef={userRef} toRef={analyzeRef} curvature={-40} pathColor="rgba(255,255,255,0.08)" pathWidth={2} gradientStartColor="#ffffff" gradientStopColor="#ffffff" duration={2} startXOffset={edgeOffset} endXOffset={-edgeOffset} />
+              <AnimatedBeam containerRef={containerRef} fromRef={userRef} toRef={analyzeRef} curvature={-40} pathColor="transparent" pathWidth={12} pathOpacity={0} gradientStartColor="rgba(255,255,255,0.6)" gradientStopColor="rgba(255,255,255,0.6)" duration={2} startXOffset={edgeOffset} endXOffset={-edgeOffset} className="blur-[6px]" />
+
+              {/* Beam 2 */}
+              <AnimatedBeam containerRef={containerRef} fromRef={analyzeRef} toRef={mixcritRef} curvature={40} pathColor="rgba(255,255,255,0.08)" pathWidth={2} gradientStartColor="#ffffff" gradientStopColor="#ffffff" duration={2} startXOffset={edgeOffset} endXOffset={-edgeOffset} />
+              <AnimatedBeam containerRef={containerRef} fromRef={analyzeRef} toRef={mixcritRef} curvature={40} pathColor="transparent" pathWidth={12} pathOpacity={0} gradientStartColor="rgba(255,255,255,0.6)" gradientStopColor="rgba(255,255,255,0.6)" duration={2} startXOffset={edgeOffset} endXOffset={-edgeOffset} className="blur-[6px]" />
+            </div>
           </div>
 
           {/* Feature rows */}
@@ -104,8 +157,8 @@ export default function Features() {
                     </div>
 
                     {/* Back — detail text */}
-                    <div className="absolute inset-0 flex flex-col justify-center px-8 py-8 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.detail}</p>
+                    <div className="absolute inset-0 flex flex-col justify-center px-5 py-5 sm:px-8 sm:py-8 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                      <p className="text-[11px] sm:text-sm text-muted-foreground leading-relaxed">{feature.detail}</p>
                       <span className="mt-6 text-[11px] font-mono text-muted-foreground/30">← click to go back</span>
                     </div>
                   </div>
