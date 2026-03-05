@@ -69,7 +69,7 @@ export default function Navbar() {
       </header>
 
       {/* Mobile header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:hidden border-b border-white/10 bg-background/60 backdrop-blur-md">
         <Link to="/" className="flex items-center gap-2 opacity-80">
           <img src={logo} alt="MixCrit" className="h-6 w-auto" />
           <span className="font-redaction-50 italic text-2xl leading-none text-foreground tracking-tighter translate-y-[3px]">MIXCRIT</span>
