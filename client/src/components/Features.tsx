@@ -68,6 +68,7 @@ export default function Features() {
 
         {/* Outer bordered container */}
         <div className="relative border border-white/10 w-full lg:max-w-5xl px-4 sm:px-6 lg:px-0">
+          <div className="pointer-events-none absolute inset-0 z-0" style={{ background: 'linear-gradient(to bottom, rgba(134,239,172,0.03) 0%, transparent 60%)' }} />
 
           {/* Heading + beam wrapper with bg */}
           <div className="relative overflow-hidden border-b border-white/10">
@@ -147,9 +148,9 @@ export default function Features() {
                 className={`flex flex-col lg:flex-row lg:h-96 ${reversed ? 'lg:flex-row-reverse' : ''} ${i < features.length - 1 ? 'border-b border-white/10' : ''}`}
               >
                 {/* Text — static */}
-                <div className={`flex flex-col justify-center px-8 py-8 lg:w-2/5 shrink-0 border-b lg:border-b-0 border-white/10 bg-white/[0.02] ${reversed ? 'lg:border-l' : 'lg:border-r'}`}>
+                <div className={`flex flex-col justify-center px-8 py-8 lg:w-2/5 shrink-0 border-b lg:border-b-0 border-white/10 bg-white/[0.04] ${reversed ? 'lg:border-l' : 'lg:border-r'}`}>
                   <span className="text-[11px] font-mono text-muted-foreground/30 mb-3">0{i + 1}</span>
-                  <h3 className="text-xl font-semibold text-foreground tracking-tight">{feature.title}</h3>
+                  <h3 className="text-2xl font-light text-foreground tracking-tight">{feature.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
 
