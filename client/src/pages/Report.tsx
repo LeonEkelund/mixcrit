@@ -211,7 +211,8 @@ function Report() {
         transition={{ duration: 1.4, delay: ready ? 0.6 : 0 }}
         style={ready ? undefined : { position: 'absolute', left: '-9999px', width: '100%', maxWidth: '64rem' }}
       >
-        <div className="min-h-screen px-4 pt-28 pb-12 max-w-5xl mx-auto flex flex-col items-center">
+        <div className="relative min-h-screen px-4 pt-28 pb-12 max-w-5xl mx-auto flex flex-col items-center">
+          <div className="pointer-events-none fixed inset-0 -z-10 [background-image:radial-gradient(circle,rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,white_10%,transparent_55%)]" />
           {/* Header */}
           <div className="mb-8 text-center">
             <h1 className="text-3xl font-bold">{fileName}</h1>
@@ -356,27 +357,33 @@ function Report() {
                 <button
                   onClick={handleGetSuggestions}
                   disabled={loadingSuggestions}
-                  className="px-6 py-3 rounded-full bg-primary text-background text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+                  className="px-6 py-3 rounded-full border border-white/20 bg-white/5 text-foreground text-sm font-medium hover:bg-white/10 hover:border-white/30 transition-all disabled:opacity-40"
                 >
                   <span className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4" />
-                    {loadingSuggestions ? 'Analyzing...' : 'Get AI Suggestions'}
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    {loadingSuggestions ? 'Generating...' : 'Generate AI feedback'}
                   </span>
                 </button>
               </div>
             )}
 
             {suggestions && (
-              <div className="rounded-xl border border-border bg-black p-4 text-base">
-                <div className="flex items-center gap-1.5 mb-4">
-                  <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-green-500/80" />
-                </div>
-                <p className="text-white whitespace-pre-wrap leading-loose tracking-wide">
-                  <span className="text-muted-foreground select-none">~ </span>
-                  {suggestions}
-                </p>
+              <div className="rounded-xl border border-border bg-black p-6 text-sm space-y-6">
+                {suggestions.split(/\n(?=OVERVIEW|ISSUES|PLUGINS)/).map((section, i) => {
+                  const [heading, ...lines] = section.trim().split('\n')
+                  return (
+                    <div key={i}>
+                      <p className="text-xs font-mono text-primary/60 uppercase tracking-widest mb-3">{heading}</p>
+                      <div className="space-y-2">
+                        {lines.filter(l => l.trim()).map((line, j) => (
+                          <p key={j} className={`leading-relaxed ${line.match(/^\d+\./) ? 'text-foreground font-medium' : 'text-muted-foreground'}`}>
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             )}
           </div>

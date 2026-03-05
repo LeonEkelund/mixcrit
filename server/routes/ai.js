@@ -26,18 +26,30 @@ function buildPrompt(result, genre, t) {
   return `
 You are a professional mixing and mastering engineer. Analyze these measurements for a ${genre} track.
 
-Start with one sentence giving a general impression of the mix overall. Then give 3-5 specific issues as a numbered list. Each item should be one or two sentences max — state the problem and what to do about it. Add a blank line between each numbered item. No markdown, no asterisks, no bold, no headers. Plain text only.
+Return your response in exactly this format, no exceptions:
 
-Give tips on plugins to use, both free and plugins that cost, here is examples of companies to mention:
-Free: Tokyo dawn labs, kilohearts
-Cost: Fabfilter, Universal audio plugins et.c
+OVERVIEW
+One sentence giving a general impression of the mix.
 
-Also mention general settings to fix the issues (like boost here and here with EQ, and threshold/speed on compressor)
+ISSUES
+1. Issue Title
+One to two sentences describing the problem and exactly what to do about it. Mention specific settings (e.g. boost 3dB at 200Hz, set threshold to -18dB).
 
-Do not mention reverb to fix the mix.
-Always give free and payed option on the plugins recommended.
+2. Issue Title
+One to two sentences describing the problem and fix.
 
-Everytime you mention clipping, also mention that this could be an intentional effect.
+(3-5 issues total)
+
+PLUGINS
+Free: Specific plugin name (Tokyo Dawn Labs, Kilohearts, etc.)
+Paid: Specific plugin name (FabFilter, Universal Audio, etc.)
+One sentence on which issue each plugin addresses.
+
+Rules:
+- No markdown, no asterisks, no bold
+- Do not mention reverb as a fix
+- If clipping is detected, mention it could be intentional
+- Always give both free and paid plugin options
 
 LOUDNESS
 - Integrated: ${result.lufs.integrated.toFixed(1)} LUFS (target: ${t.lufs.min} to ${t.lufs.max})
