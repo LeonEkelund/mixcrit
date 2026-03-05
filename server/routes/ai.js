@@ -35,7 +35,7 @@ Cost: Fabfilter, Universal audio plugins et.c
 Also mention general settings to fix the issues (like boost here and here with EQ, and threshold/speed on compressor)
 
 Do not mention reverb to fix the mix.
-Always give free and payed option on the plugins recommended
+Always give free and payed option on the plugins recommended.
 
 Everytime you mention clipping, also mention that this could be an intentional effect.
 
