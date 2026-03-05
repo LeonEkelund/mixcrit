@@ -1,6 +1,17 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion, type Variants } from 'motion/react'
 import { useAuth } from '@/lib/AuthContext'
+
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+}
+
+const item: Variants = {
+  hidden: { opacity: 0, filter: 'blur(8px)', y: 12 },
+  show: { opacity: 1, filter: 'blur(0px)', y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+}
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -34,20 +45,25 @@ function Login() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4">
-      <div className="w-full max-w-md flex flex-col gap-6">
-        <div className="flex flex-col gap-1">
+      <motion.div
+        className="w-full max-w-md flex flex-col gap-6"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div variants={item} className="flex flex-col gap-1">
           <h1 className="text-2xl font-semibold">Log in</h1>
           <p className="text-sm text-muted-foreground">Welcome back.</p>
-        </div>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <motion.form variants={item} onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-ring"
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-base md:text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-ring"
           />
           <input
             type="password"
@@ -55,7 +71,7 @@ function Login() {
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-ring"
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-base md:text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-ring"
           />
 
           {error && <p className="text-sm text-red-400">{error}</p>}
@@ -67,15 +83,15 @@ function Login() {
           >
             {loading ? 'Logging in...' : 'Log in'}
           </button>
-        </form>
+        </motion.form>
 
-        <p className="text-sm text-muted-foreground text-center">
+        <motion.p variants={item} className="text-sm text-muted-foreground text-center">
           Don't have an account?{' '}
           <Link to="/signup" className="text-foreground hover:text-primary transition-colors">
             Sign up
           </Link>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </div>
   )
 }

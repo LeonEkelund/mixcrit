@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
     const user = await User.create({ email, password: hashed })
     res.status(201).json({ token: signToken(user), user: { id: user._id, email: user.email } })
   } catch (err) {
-    res.status(500).json({ error: 'Server error' })
+res.status(500).json({ error: 'Server error' })
   }
 })
 
