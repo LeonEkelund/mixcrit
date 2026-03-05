@@ -1,10 +1,21 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, ArrowRight } from 'lucide-react'
+import { motion } from 'motion/react'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
 import { AnimatedShinyText } from '@/components/magicui/animated-shiny-text'
 import Features from '@/components/Features'
 import thumbnail from '@/assets/thumbnailfinal.png'
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+}
+
+const item = {
+  hidden: { opacity: 0, filter: 'blur(8px)', y: 12 },
+  show: { opacity: 1, filter: 'blur(0px)', y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+}
 
 function Landing() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -43,31 +54,42 @@ function Landing() {
           }}
         />
 
-        <div className="relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs backdrop-blur-sm">
-          <span className="rounded-full bg-primary/20 px-1.5 py-0.5 text-[10px] font-medium text-primary">New</span>
-          <span className="text-muted-foreground/70">AI-powered feedback</span>
-        </div>
-
-        <h1 className="relative text-center font-redaction-50 italic text-4xl md:text-5xl lg:text-7xl text-foreground tracking-tight">
-          Instant mix feedback.
-        </h1>
-        <p className="relative -mt-2 text-center text-sm text-foreground/60">
-          Professional audio analytics, completely free.
-        </p>
-        <Link
-          to="/upload"
-          className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm text-foreground transition-colors duration-200 hover:bg-white/10"
+        <motion.div
+          className="relative flex flex-col items-center gap-6"
+          variants={container}
+          initial="hidden"
+          animate="show"
         >
-          <AnimatedShinyText shimmerWidth={160}>Analyze your mix</AnimatedShinyText>
-          <ArrowRight className="size-3.5 translate-y-[1px]" />
-        </Link>
-        <HeroVideoDialog
-          className="relative w-full max-w-3xl"
-          animationStyle="from-center"
-          videoSrc="https://www.youtube.com/embed/WWcbQlPAFfA"
-          thumbnailSrc={thumbnail}
-          thumbnailAlt="MixCrit demo walkthrough"
-        />
+          <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs backdrop-blur-sm">
+            <span className="rounded-full bg-primary/20 px-1.5 py-0.5 text-[10px] font-medium text-primary">New</span>
+            <span className="text-muted-foreground/70">AI-powered feedback</span>
+          </motion.div>
+
+          <motion.h1 variants={item} className="text-center font-redaction-50 italic text-4xl md:text-5xl lg:text-7xl text-foreground tracking-tight">
+            Instant mix feedback.
+          </motion.h1>
+          <motion.p variants={item} className="-mt-2 text-center text-sm text-foreground/60">
+            Professional audio analytics, completely free.
+          </motion.p>
+          <motion.div variants={item}>
+            <Link
+              to="/upload"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm text-foreground transition-colors duration-200 hover:bg-white/10"
+            >
+              <AnimatedShinyText shimmerWidth={160}>Analyze your mix</AnimatedShinyText>
+              <ArrowRight className="size-3.5 translate-y-[1px]" />
+            </Link>
+          </motion.div>
+          <motion.div variants={item} className="w-full max-w-3xl">
+            <HeroVideoDialog
+              className="relative w-full"
+              animationStyle="from-center"
+              videoSrc="https://www.youtube.com/embed/WWcbQlPAFfA"
+              thumbnailSrc={thumbnail}
+              thumbnailAlt="MixCrit demo walkthrough"
+            />
+          </motion.div>
+        </motion.div>
 
         {/* Scroll chevron */}
         <div
