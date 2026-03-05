@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, ArrowRight } from 'lucide-react'
-import { motion } from 'motion/react'
+import { motion, type Variants } from 'motion/react'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
 import { AnimatedShinyText } from '@/components/magicui/animated-shiny-text'
 import Features from '@/components/Features'
 import thumbnail from '@/assets/thumbnailfinal.png'
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12 } },
 }
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, filter: 'blur(8px)', y: 12 },
   show: { opacity: 1, filter: 'blur(0px)', y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
