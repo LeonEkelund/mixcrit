@@ -54,7 +54,7 @@ function Landing() {
         />
 
         <motion.div
-          className="relative flex flex-col items-center gap-6"
+          className="relative flex flex-col items-center gap-4"
           variants={container}
           initial="hidden"
           animate="show"
@@ -70,7 +70,7 @@ function Landing() {
           <motion.p variants={item} className="-mt-2 text-center text-sm text-foreground/60">
             Professional audio analytics, completely free.
           </motion.p>
-          <motion.div variants={item} className="mt-5 rounded-full backdrop-blur-sm">
+          <motion.div variants={item} className="rounded-full backdrop-blur-sm">
             <Link
               to="/upload"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-6 py-2 text-sm text-white transition-colors duration-200 hover:bg-white/25"
@@ -79,11 +79,11 @@ function Landing() {
 <ArrowRight className="size-3.5 translate-y-[1px]" />
             </Link>
           </motion.div>
-          <motion.div variants={item} className="-mt-2 w-full max-w-3xl md:max-w-4xl">
+          <motion.div variants={item} className="mt-4 w-full max-w-3xl md:max-w-4xl">
             <HeroVideoDialog
               className="relative w-full"
               animationStyle="from-center"
-              videoSrc="https://www.youtube.com/embed/WWcbQlPAFfA"
+              videoSrc="https://www.youtube.com/embed/eh9VY_531Ao"
               thumbnailSrc={thumbnail}
               thumbnailAlt="MixCrit demo walkthrough"
             />
