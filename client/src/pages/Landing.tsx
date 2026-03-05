@@ -79,7 +79,7 @@ function Landing() {
 <ArrowRight className="size-3.5 translate-y-[1px]" />
             </Link>
           </motion.div>
-          <motion.div variants={item} className="w-full max-w-3xl">
+          <motion.div variants={item} className="w-full max-w-3xl md:max-w-4xl">
             <HeroVideoDialog
               className="relative w-full"
               animationStyle="from-center"
