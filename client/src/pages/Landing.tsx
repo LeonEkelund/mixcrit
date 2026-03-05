@@ -71,10 +71,10 @@ function Landing() {
           <motion.p variants={item} className="-mt-2 text-center text-sm text-foreground/60">
             Professional audio analytics, completely free.
           </motion.p>
-          <motion.div variants={item}>
+          <motion.div variants={item} className="mt-5 rounded-full backdrop-blur-sm">
             <Link
               to="/upload"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm text-foreground transition-colors duration-200 hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm text-foreground transition-colors duration-200 hover:bg-white/10"
             >
               <AnimatedShinyText shimmerWidth={160}>Analyze your mix</AnimatedShinyText>
               <ArrowRight className="size-3.5 translate-y-[1px]" />
