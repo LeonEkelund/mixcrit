@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'motion/react'
 import logo from '../assets/mixcritsvgfinal.svg'
 import { useAuth } from '@/lib/AuthContext'
 
@@ -130,15 +131,22 @@ export default function Navbar() {
       </header>
 
       {/* Fullscreen mobile menu */}
-      <div className={`fixed inset-0 z-40 bg-background/40 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <nav className="flex flex-col items-center gap-6">
+      <AnimatePresence>
+      {menuOpen && <motion.div
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -16 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
+        className="fixed inset-0 z-40 bg-background/40 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-10 lg:hidden"
+      >
+        <nav className="flex flex-col gap-2">
           {navLinks.map(({ label, to }) => (
             <Link
               key={to}
               to={to}
-              className={`text-3xl font-medium transition-colors ${pathname === to
+              className={`text-2xl font-medium py-2 transition-colors ${pathname === to
                 ? 'text-primary'
-                : 'text-muted-foreground hover:text-foreground'
+                : 'text-foreground/80 hover:text-foreground'
                 }`}
             >
               {label}
@@ -146,15 +154,13 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="h-px w-16 bg-border" />
-
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col gap-3">
           {isLoggedIn ? (
             <>
               <p className="text-sm text-muted-foreground">{user?.email}</p>
               <button
                 onClick={() => { logout(); setMenuOpen(false) }}
-                className="rounded-full border border-border bg-muted/60 px-8 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="w-full rounded-md border border-border bg-muted/60 px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 Sign out
               </button>
@@ -163,20 +169,21 @@ export default function Navbar() {
             <>
               <Link
                 to="/login"
-                className="rounded-full border border-border bg-muted/60 px-8 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="w-full rounded-md border border-border bg-muted/60 px-4 py-3 text-sm font-medium text-center text-muted-foreground transition-colors hover:text-foreground"
               >
                 Log in
               </Link>
               <Link
                 to="/signup"
-                className="rounded-full bg-primary px-8 py-3 text-sm font-medium text-background transition-colors hover:bg-primary/80"
+                className="w-full rounded-md bg-primary px-4 py-3 text-sm font-medium text-center text-background transition-colors hover:bg-primary/80"
               >
                 Sign up
               </Link>
             </>
           )}
         </div>
-      </div>
+      </motion.div>}
+      </AnimatePresence>
     </>
   )
 }
