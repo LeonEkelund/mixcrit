@@ -153,11 +153,11 @@ export default function Features() {
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
 
-                {/* Image panel — flippable */}
+                {/* Image panel — flippable on desktop only */}
                 <div
-                  className="lg:w-3/5 overflow-hidden cursor-pointer"
+                  className="lg:w-3/5 overflow-hidden lg:cursor-pointer"
                   style={{ perspective: '1200px' }}
-                  onClick={() => setFlipped(isFlipped ? null : i)}
+                  onClick={() => { if (window.innerWidth >= 1024) setFlipped(isFlipped ? null : i) }}
                 >
                   <div
                     className="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 ease-in-out"
