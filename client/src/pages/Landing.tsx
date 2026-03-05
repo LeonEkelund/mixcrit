@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ArrowRight } from 'lucide-react'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
+import { AnimatedShinyText } from '@/components/magicui/animated-shiny-text'
 import Features from '@/components/Features'
-import thumbnail from '@/assets/thumbnail.png'
+import thumbnail from '@/assets/thumbnailfinal.png'
 
 function Landing() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -42,20 +43,26 @@ function Landing() {
           }}
         />
 
+        <div className="relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs backdrop-blur-sm">
+          <span className="rounded-full bg-primary/20 px-1.5 py-0.5 text-[10px] font-medium text-primary">New</span>
+          <span className="text-muted-foreground/70">AI-powered feedback</span>
+        </div>
+
         <h1 className="relative text-center font-redaction-50 italic text-4xl md:text-5xl lg:text-7xl text-foreground tracking-tight">
           Instant mix feedback.
         </h1>
-        <p className="relative -mt-2 max-w-md text-center text-base sm:text-lg text-foreground/70">
-          Upload your track and get a detailed analysis in seconds. Completely free, no signup required.
+        <p className="relative -mt-2 text-center text-sm text-foreground/60">
+          Professional audio analytics, completely free.
         </p>
         <Link
           to="/upload"
-          className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-8 sm:px-10 py-3.5 text-sm font-medium uppercase tracking-wide text-foreground/90 shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 ease-in-out hover:bg-white/10 hover:text-foreground hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+          className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm backdrop-blur-sm text-foreground transition-colors duration-200 hover:bg-white/10"
         >
-          Analyze your mix
+          <AnimatedShinyText shimmerWidth={160}>Analyze your mix</AnimatedShinyText>
+          <ArrowRight className="size-3.5 translate-y-[1px]" />
         </Link>
         <HeroVideoDialog
-          className="relative mt-4 w-full max-w-3xl"
+          className="relative w-full max-w-3xl"
           animationStyle="from-center"
           videoSrc="https://www.youtube.com/embed/WWcbQlPAFfA"
           thumbnailSrc={thumbnail}
