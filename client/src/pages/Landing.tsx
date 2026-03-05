@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, type Variants } from 'motion/react'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
-import { AnimatedShinyText } from '@/components/magicui/animated-shiny-text'
 import Features from '@/components/Features'
 import thumbnail from '@/assets/thumbnailfinal.png'
 
@@ -74,10 +73,10 @@ function Landing() {
           <motion.div variants={item} className="mt-5 rounded-full backdrop-blur-sm">
             <Link
               to="/upload"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm text-foreground transition-colors duration-200 hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-6 py-2 text-sm text-white transition-colors duration-200 hover:bg-white/25"
             >
-              <AnimatedShinyText shimmerWidth={160}>Analyze your mix</AnimatedShinyText>
-              <ArrowRight className="size-3.5 translate-y-[1px]" />
+              Analyze your mix
+<ArrowRight className="size-3.5 translate-y-[1px]" />
             </Link>
           </motion.div>
           <motion.div variants={item} className="w-full max-w-3xl">

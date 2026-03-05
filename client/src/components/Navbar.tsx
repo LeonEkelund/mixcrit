@@ -40,7 +40,7 @@ export default function Navbar() {
               <Link
                 key={to}
                 to={to}
-                className={`rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition-colors ${pathname === to
+                className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${pathname === to
                   ? 'text-primary'
                   : 'text-muted-foreground hover:text-foreground'
                   }`}
@@ -55,13 +55,13 @@ export default function Navbar() {
         <div className="flex items-center gap-2 justify-self-end">
           <Link
             to="/login"
-            className="rounded-full border border-border bg-muted/60 px-5 py-2 text-sm font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground"
+            className="rounded-full border border-border bg-muted/60 px-5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Log in
           </Link>
           <Link
             to="/register"
-            className="rounded-full bg-primary px-5 py-2 text-sm font-medium uppercase tracking-wide text-background transition-colors hover:bg-primary/80"
+            className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-background transition-colors hover:bg-primary/80"
           >
             Register
           </Link>
@@ -94,7 +94,7 @@ export default function Navbar() {
             <Link
               key={to}
               to={to}
-              className={`text-3xl font-medium uppercase tracking-wide transition-colors ${pathname === to
+              className={`text-3xl font-medium transition-colors ${pathname === to
                 ? 'text-primary'
                 : 'text-muted-foreground hover:text-foreground'
                 }`}
@@ -109,13 +109,13 @@ export default function Navbar() {
         <div className="flex flex-col items-center gap-3">
           <Link
             to="/login"
-            className="rounded-full border border-border bg-muted/60 px-8 py-3 text-sm font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground"
+            className="rounded-full border border-border bg-muted/60 px-8 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Log in
           </Link>
           <Link
             to="/register"
-            className="rounded-full bg-primary px-8 py-3 text-sm font-medium uppercase tracking-wide text-background transition-colors hover:bg-primary/80"
+            className="rounded-full bg-primary px-8 py-3 text-sm font-medium text-background transition-colors hover:bg-primary/80"
           >
             Register
           </Link>
