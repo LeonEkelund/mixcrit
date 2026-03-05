@@ -89,7 +89,7 @@ export default function Features() {
               </h2>
               <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm backdrop-blur-sm">
                 <span className="rounded-full bg-primary/20 px-2 py-0.5 text-xs font-medium text-primary whitespace-nowrap">Opt-in AI</span>
-                <span className="text-muted-foreground/70 text-xs sm:text-sm whitespace-nowrap">Runs in your browser. No accounts.</span>
+                <span className="text-muted-foreground/70 text-xs sm:text-sm whitespace-nowrap">AI feedback, only if you want it.</span>
               </div>
             </div>
 
