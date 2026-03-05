@@ -64,7 +64,7 @@ function Landing() {
             <span className="text-muted-foreground/70">AI-powered feedback</span>
           </motion.div>
 
-          <motion.h1 variants={item} className="text-center font-redaction-50 italic text-4xl md:text-5xl lg:text-7xl text-foreground tracking-tight">
+          <motion.h1 variants={item} className="text-center font-redaction-50 italic text-4xl md:text-6xl lg:text-[5rem] text-foreground tracking-tight">
             Instant mix feedback.
           </motion.h1>
           <motion.p variants={item} className="-mt-2 text-center text-sm text-foreground/60">
@@ -79,7 +79,7 @@ function Landing() {
 <ArrowRight className="size-3.5 translate-y-[1px]" />
             </Link>
           </motion.div>
-          <motion.div variants={item} className="w-full max-w-3xl md:max-w-4xl">
+          <motion.div variants={item} className="-mt-2 w-full max-w-3xl md:max-w-4xl">
             <HeroVideoDialog
               className="relative w-full"
               animationStyle="from-center"

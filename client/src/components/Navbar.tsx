@@ -60,10 +60,10 @@ export default function Navbar() {
             Log in
           </Link>
           <Link
-            to="/register"
+            to="/signup"
             className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-background transition-colors hover:bg-primary/80"
           >
-            Register
+            Sign up
           </Link>
         </div>
       </header>
@@ -114,10 +114,10 @@ export default function Navbar() {
             Log in
           </Link>
           <Link
-            to="/register"
+            to="/signup"
             className="rounded-full bg-primary px-8 py-3 text-sm font-medium text-background transition-colors hover:bg-primary/80"
           >
-            Register
+            Sign up
           </Link>
         </div>
       </div>
