@@ -369,17 +369,24 @@ function Report() {
 
             {suggestions && (
               <div className="rounded-xl border border-border bg-black p-6 text-sm space-y-6">
-                {suggestions.split(/\n(?=OVERVIEW|ISSUES|PLUGINS)/).map((section, i) => {
-                  const [heading, ...lines] = section.trim().split('\n')
+                {suggestions.split(/\n(?=OVERVIEW|ISSUES)/).map((section, i) => {
+                  const [heading, ...rawLines] = section.trim().split('\n')
+                  const lines = rawLines.flatMap(l =>
+                    l.split(/\s*(?=Free:|Paid:)/)
+                  )
                   return (
                     <div key={i}>
                       <p className="text-xs font-mono text-primary/60 uppercase tracking-widest mb-3">{heading}</p>
-                      <div className="space-y-2">
-                        {lines.filter(l => l.trim()).map((line, j) => (
-                          <p key={j} className={`leading-relaxed ${line.match(/^\d+\./) ? 'text-foreground font-medium' : 'text-muted-foreground'}`}>
-                            {line}
-                          </p>
-                        ))}
+                      <div className="space-y-3">
+                        {lines.filter(l => l.trim()).map((line, j) => {
+                          const isPlugin = !!line.match(/^(Free|Paid):/)
+                          const display = isPlugin ? line.replace(/[.,]+$/, '') : line
+                          return (
+                            <p key={j} className={`leading-relaxed ${line.match(/^\d+\./) ? 'text-foreground font-medium mt-4 first:mt-0' : isPlugin ? 'text-white text-xs font-mono mt-0' : 'text-muted-foreground'}`}>
+                              {display}
+                            </p>
+                          )
+                        })}
                       </div>
                     </div>
                   )

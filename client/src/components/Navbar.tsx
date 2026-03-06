@@ -5,13 +5,15 @@ import logo from '../assets/mixcritsvgfinal.svg'
 import { useAuth } from '@/lib/AuthContext'
 
 const navLinks = [
+  { label: 'Home', to: '/' },
   { label: 'Analyze', to: '/upload' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ]
 
 export default function Navbar() {
-  const { pathname } = useLocation()
+  const { pathname: rawPathname } = useLocation()
+  const pathname = rawPathname === '/report' ? '/upload' : rawPathname
   const { user, isLoggedIn, logout } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -43,33 +45,33 @@ export default function Navbar() {
   return (
     <>
       {/* Desktop navbar */}
-      <header className="fixed top-6 left-0 right-0 z-50 hidden lg:grid grid-cols-[1fr_auto_1fr] items-center px-16">
+      <header className="fixed top-6 left-0 right-0 z-50 hidden lg:flex items-center px-16">
         {/* Logo — left */}
-        <Link to="/" className="flex items-center gap-2 justify-self-start transition-opacity opacity-80 hover:opacity-100">
+        <Link to="/" className="flex items-center gap-2 transition-opacity opacity-80 hover:opacity-100">
           <img src={logo} alt="MixCrit" className="h-8 w-auto translate-y-px" />
           <span className="font-redaction-50 italic text-4xl leading-none text-foreground tracking-tighter translate-y-[4px]">MIXCRIT</span>
         </Link>
 
-        {/* Nav links — center pill */}
-        <nav className="rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-2 py-1.5">
+        {/* Nav links — absolute center */}
+        <nav className="absolute left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-2 py-1.5">
           <div className="flex items-center gap-1">
-            {navLinks.map(({ label, to }) => (
-              <Link
-                key={to}
-                to={to}
-                className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${pathname === to
-                  ? 'text-primary'
-                  : 'text-muted-foreground hover:text-foreground'
-                  }`}
-              >
-                {label}
-              </Link>
-            ))}
+            {navLinks.map(({ label, to }) => {
+              const active = pathname === to
+              return (
+                <Link
+                  key={to}
+                  to={to}
+                  className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${active ? 'text-foreground bg-white/10 ring-1 ring-white/20' : 'text-muted-foreground hover:text-foreground'}`}
+                >
+                  {label}
+                </Link>
+              )
+            })}
           </div>
         </nav>
 
         {/* Auth — right */}
-        <div className="flex items-center gap-2 justify-self-end">
+        <div className="flex items-center gap-2 ml-auto">
           {isLoggedIn ? (
             <div className="relative" ref={dropdownRef}>
               <button
