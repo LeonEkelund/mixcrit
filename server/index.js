@@ -11,6 +11,16 @@ const port = process.env.PORT || 3000
 app.use(cors())
 app.use(express.json())
 
+app.get('/', (req, res) => res.json({
+  status: 'ok',
+  endpoints: [
+    'POST /api/ai/suggest',
+    'POST /api/auth/register',
+    'POST /api/auth/login',
+    'GET  /api/auth/me',
+  ]
+}))
+
 app.use('/api/ai', aiRouter)
 app.use('/api/auth', authRouter)
 
