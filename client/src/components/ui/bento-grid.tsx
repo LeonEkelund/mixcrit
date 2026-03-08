@@ -1,8 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 
 interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
   children: ReactNode
@@ -15,9 +13,6 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   background: ReactNode
   Icon: React.ElementType
   description: string
-  href?: string
-  cta?: string
-  detail?: string
   noHover?: boolean
 }
 
@@ -41,9 +36,6 @@ const BentoCard = ({
   background,
   Icon,
   description,
-  href,
-  cta,
-  detail,
   noHover,
   ...props
 }: BentoCardProps) => (
@@ -66,53 +58,7 @@ const BentoCard = ({
         </h3>
         <p className="max-w-lg text-neutral-400">{description}</p>
       </div>
-
-      {cta && href && (
-        <div
-          className={cn(
-            "pointer-events-none flex w-full translate-y-0 transform-gpu flex-row items-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:hidden"
-          )}
-        >
-          <Button
-            variant="link"
-            asChild
-            size="sm"
-            className="pointer-events-auto p-0"
-          >
-            <a href={href}>
-              {cta}
-              <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-            </a>
-          </Button>
-        </div>
-      )}
     </div>
-
-    {cta && href && (
-      <div
-        className={cn(
-          "pointer-events-none absolute bottom-0 hidden w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:flex"
-        )}
-      >
-        <Button
-          variant="link"
-          asChild
-          size="sm"
-          className="pointer-events-auto p-0"
-        >
-          <a href={href}>
-            {cta}
-            <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-          </a>
-        </Button>
-      </div>
-    )}
-
-    {detail && (
-      <div className="pointer-events-none absolute bottom-0 w-full translate-y-10 transform-gpu p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-        <p className="text-sm text-muted-foreground">{detail}</p>
-      </div>
-    )}
 
     {!noHover && (
       <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 export interface AnimatedBeamProps {
   className?: string
-  containerRef: RefObject<HTMLElement | null> // Container ref
+  containerRef: RefObject<HTMLElement | null> 
   fromRef: RefObject<HTMLElement | null>
   toRef: RefObject<HTMLElement | null>
   curvature?: number
@@ -30,7 +30,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   fromRef,
   toRef,
   curvature = 0,
-  reverse = false, // Include the reverse prop
+  reverse = false, 
   duration = Math.random() * 3 + 4,
   delay = 0,
   pathColor = "gray",
@@ -89,20 +89,20 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       }
     }
 
-    // Initialize ResizeObserver
+ 
     const resizeObserver = new ResizeObserver(() => {
       updatePath()
     })
 
-    // Observe the container element
+  
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current)
     }
 
-    // Call the updatePath initially to set the initial path
+
     updatePath()
 
-    // Clean up the observer on component unmount
+   
     return () => {
       resizeObserver.disconnect()
     }

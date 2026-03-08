@@ -76,7 +76,7 @@ function Landing() {
               className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-6 py-2 text-sm text-white transition-colors duration-200 hover:bg-white/25"
             >
               Analyze your mix
-<ArrowRight className="size-3.5 translate-y-[1px]" />
+              <ArrowRight className="size-3.5 translate-y-[1px]" />
             </Link>
           </motion.div>
           <motion.div variants={item} className="mt-4 w-full max-w-3xl md:max-w-4xl">

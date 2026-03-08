@@ -18,7 +18,7 @@ function About() {
           About
         </motion.h1>
         <motion.p variants={item} className="mt-4 max-w-md text-base text-foreground/60 leading-relaxed">
-          MixCrit was built by a solo developer with a simple goal — to create a mix analysis tool that's actually useful in the real world. No paywalls, no accounts, no uploading your music to someone else's server.
+          MixCrit was built by a solo developer with a simple goal — to create a mix analysis tool that's actually useful in the real world. No paywalls, no uploading your music to someone else's server.
         </motion.p>
         <motion.p variants={item} className="mt-4 max-w-md text-base text-foreground/60 leading-relaxed">
           Everything runs locally in your browser. Upload your track, get instant feedback on your EQ balance, dynamics, stereo image, and loudness — then use that feedback to make better mixes.
