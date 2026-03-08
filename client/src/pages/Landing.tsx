@@ -4,7 +4,7 @@ import { ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, type Variants } from 'motion/react'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
 import Features from '@/components/Features'
-import thumbnail from '@/assets/thumbnailfinal.png'
+import thumbnail from '@/assets/yt-thumbnail.webp'
 
 const container: Variants = {
   hidden: {},
