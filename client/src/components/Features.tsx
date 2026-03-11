@@ -44,7 +44,7 @@ const features = [
   },
 ]
 
-const edgeOffset = 32
+const edgeOffset = 20
 
 export default function Features() {
   const [flipped, setFlipped] = useState<number | null>(null)
@@ -106,7 +106,7 @@ export default function Features() {
                     <User className="size-5 text-foreground/70" />
                   </div>
                   <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Upload</span>
-                  <p className="max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Drop your mix in any format</p>
+                  <p className="hidden sm:block max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Drop your mix in any format</p>
                 </div>
 
                 {/* Analyze */}
@@ -115,7 +115,7 @@ export default function Features() {
                     <AudioWaveform className="size-5 text-foreground/70" />
                   </div>
                   <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Analyze</span>
-                  <p className="max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Examines EQ, dynamics, and more</p>
+                  <p className="hidden sm:block max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Examines EQ, dynamics, and more</p>
                 </div>
 
                 {/* Report */}
@@ -124,7 +124,7 @@ export default function Features() {
                     <img src={logo} alt="MixCrit" className="size-5 opacity-70" />
                   </div>
                   <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Report</span>
-                  <p className="max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Get actionable feedback in seconds</p>
+                  <p className="hidden sm:block max-w-[5rem] text-center text-[10px] text-muted-foreground/70">Get actionable feedback in seconds</p>
                 </div>
 
                 {/* Beam 1 */}
